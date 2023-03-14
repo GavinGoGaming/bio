@@ -4,9 +4,123 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Win11</title>
+    <title>notGoogle</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://site-assets.fontawesome.com/releases/v6.3.0/css/all.css" rel="stylesheet"/>
+    <meta name="description" content="notGoogle - An all-in-one easy proxy.">
+    <meta property="og:title" content="notGoogle - An all-in-one easy proxy.">
+    <meta property="og:description" content="An all-in-one easy proxy.">
+    <meta property="og:image" content="/notGoogleG.png">
+    <meta name="twitter:title" content="notGoogle - An all-in-one easy proxy.">
+    <meta name="twitter:description" content="An all-in-one easy proxy.">
+    <meta name="twitter:image" content="/notGoogleG.png">
+    <link rel="shortcut icon" href="/favicon.ico?" type="image/x-icon"/>
 </head>
 <body>
-    <iframe src="https://win11.blueedge.me/"></iframe>
+    <ul class="nav">
+        <li><a href='/'>Proxy</a></li>
+        <li class="right"><img width="30" height="30" style="border-radius: 50%;background-color: white;" src="https://imgs.search.brave.com/4_rXGv59gR6aIrI2XNfxuXHnDlmjnTlExtoe_qNISe4/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93d3cu/c2FsZXNmb3JjZWJl/bi5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMjEvMDMvZ29v/Z2xlLWxvZ28taWNv/bi1QTkctVHJhbnNw/YXJlbnQtQmFja2dy/b3VuZC0yMDQ4eDIw/NDgucG5n"></li>
+        <li class="right"><i class="right fa-solid fa-circle-ellipsis"></i></li>
+        <li class="right"><a href="https://patreon.com/klashdevelopment">Support</a></li>
+        <li class="right"><a href="https://shop.gavingogaming.com/">Merch</a></li>
+    </ul>
+    <center style="margin-top: 16vh;">
+        <img src="notGoogle.png" width="335" height="auto"><br>
+        <br>
+        <div class="input">
+            <input type="text" placeholder="Search the web UNBLOCKED!">
+        </div>
+        <br>
+        <button class="noogle">Search Unblocked</button>
+        <button class="noogle" onclick="window.location.href='#appsgames'">Apps & Games</button>
+        <br><br><br><br>
+        <div id="appsgames">
+            <h2>Apps & Games</h2>
+            <div class="grid-container">
+                <div class="grid-item" data-link="https://google.com/">
+                    <div class="image-container">
+                        <img src="images/google.webp" alt="google">
+                    </div>
+                    <b>Google</b>
+                </div>
+                <div class="grid-item" data-link="https://dedragames.com/games/ovo/1.4.4/">
+                    <div class="image-container">
+                        <img src="images/ovo.png" alt="OvO Game">
+                    </div>
+                    <b>OvO Game</b>
+                </div>
+                <div class="grid-item" data-link="https://discord.com/">
+                    <div class="image-container">
+                        <img src="images/discord.webp" alt="Discord">
+                    </div>
+                    <b>Discord</b>
+                </div>
+                <div class="grid-item" data-link="https://chat.openai.com/">
+                    <div class="image-container">
+                        <img src="images/chatgpt.png" alt="ChatGPT">
+                    </div>
+                    <b>ChatGPT</b>
+                </div>
+                <div class="grid-item" data-link="https://egghead.institute/">
+                    <div class="image-container">
+                        <img src="images/shellshock.webp" alt="SHELLSHOCKER">
+                    </div>
+                    <b>Shell Shock</b>
+                </div>
+                <div class="grid-item" data-link="https://replit.com/">
+                    <div class="image-container">
+                        <img src="images/replit.webp" alt="Replit">
+                    </div>
+                    <b>Repl.it</b>
+                </div>
+                <div class="grid-item" data-link="https://binbashbanana.github.io/webretro/">
+                    <div class="image-container">
+                        <img src="images/webretro.webp" alt="Webretro">
+                    </div>
+                    <b>WebRetro</b>
+                </div>
+                <div class="grid-item" data-link="https://tiktok.com/">
+                    <div class="image-container">
+                        <img src="images/tiktok.webp" alt="Tiktok">
+                    </div>
+                    <b>TikTok</b>
+                </div>
+                <div class="grid-item" data-link="https://twitter.com">
+                    <div class="image-container">
+                        <img src="images/twitter.webp" alt="Twitter">
+                    </div>
+                    <b>Twitter</b>
+                </div>
+                <div class="grid-item" data-link="https://twitch.tv/">
+                    <div class="image-container">
+                        <img src="images/twitch.webp" alt="Twitch">
+                    </div>
+                    <b>Twitch</b>
+                </div>
+                <div class="grid-item" data-link="https://open.spotify.com/">
+                    <div class="image-container">
+                        <img src="images/spotify.webp" alt="Spotify">
+                    </div>
+                    <b>Spotify</b>
+                </div>
+            </div>
+        </div>
+    </center>
+    <script>
+        document.querySelectorAll('.grid-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                fetch('/proxy', {
+                    method: 'POST',
+                    body: { 'site': item.dataset.link },
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(res => res.text())
+                .then(res => {
+                    document.querySelector('.grid-container').innerHTML = res;
+                });
+            });
+        });
+    </script>
 </body>
 </html>
