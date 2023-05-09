@@ -14,8 +14,11 @@ app.use(require('body-parser').json());
 app.use(express.static(__dirname));
 
 app.use('/proxy', (req, res) => {
-    console.log(req.body);
-    proxy.web(req, res, { target: req.body.site });
+    var id = `/system/${Math.floor(Math.random()*1500)}`;
+    res.end(id);
+    app.use(id, (req2, res2) => {
+        proxy.web(req2, res2, { target: req.body.site });
+    });
 });
 
 app.listen(3000, ()=>{

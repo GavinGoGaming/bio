@@ -19,7 +19,7 @@
 <body>
     <ul class="nav">
         <li><a href='/'>Proxy</a></li>
-        <li class="right"><img width="30" height="30" style="border-radius: 50%;background-color: white;" src="https://imgs.search.brave.com/4_rXGv59gR6aIrI2XNfxuXHnDlmjnTlExtoe_qNISe4/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93d3cu/c2FsZXNmb3JjZWJl/bi5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMjEvMDMvZ29v/Z2xlLWxvZ28taWNv/bi1QTkctVHJhbnNw/YXJlbnQtQmFja2dy/b3VuZC0yMDQ4eDIw/NDgucG5n"></li>
+        <li class="right"><img width="30" height="30" style="border-radius: 50%;background-color: white;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"></li>
         <li class="right"><i class="right fa-solid fa-circle-ellipsis"></i></li>
         <li class="right"><a href="https://patreon.com/klashdevelopment">Support</a></li>
         <li class="right"><a href="https://shop.gavingogaming.com/">Merch</a></li>
@@ -31,11 +31,12 @@
             <input type="text" placeholder="Search the web UNBLOCKED!">
         </div>
         <br>
-        <button class="noogle">Search Unblocked</button>
+        <button class="noogle">Search The COOLWeb</button>
         <button class="noogle" onclick="window.location.href='#appsgames'">Apps & Games</button>
-        <br><br><br><br>
+        <br><br><br><br><br><br><br>
         <div id="appsgames">
             <h2>Apps & Games</h2>
+            <a id="service"></a>
             <div class="grid-container">
                 <div class="grid-item" data-link="https://google.com/">
                     <div class="image-container">
@@ -117,13 +118,15 @@
             item.addEventListener('click', (e) => {
                 fetch('/proxy', {
                     method: 'POST',
-                    body: { 'site': item.dataset.link },
+                    body: JSON.stringify({ "site": item.dataset.link }),
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 }).then(res => res.text())
                 .then(res => {
-                    document.querySelector('.grid-container').innerHTML = res;
+                    document.querySelector('#service').href = res;
+                    document.querySelector('#service').textContent=res;
+                    document.querySelector('.grid-container').innerHTML = `<iframe src="${res}"></iframe>`;
                 });
             });
         });
