@@ -28,13 +28,12 @@
         <img src="notGoogle.png" width="335" height="auto"><br>
         <br>
         <div class="input">
-            <input type="text" placeholder="Search the web UNBLOCKED!">
+            <input type="text" placeholder="Search the web (by clicking the button below)">
         </div>
         <br>
-        <button class="noogle">Search The COOLWeb</button>
-        <button class="noogle" onclick="window.location.href='#appsgames'">Apps & Games</button>
+        <button class="noogle">Im Feeling Unblocked</button>
         <br><br><br><br><br><br><br>
-        <div id="appsgames">
+        <!-- <div id="appsgames">
             <h2>Apps & Games</h2>
             <a id="service"></a>
             <div class="grid-container">
@@ -110,26 +109,41 @@
                     </div>
                     <b>Windows</b>
                 </div>
-            </div>
+            </div> -->
         </div>
     </center>
     <script>
-        document.querySelectorAll('.grid-item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                fetch('/proxy', {
-                    method: 'POST',
-                    body: JSON.stringify({ "site": item.dataset.link }),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }).then(res => res.text())
-                .then(res => {
-                    document.querySelector('#service').href = res;
-                    document.querySelector('#service').textContent=res;
-                    document.querySelector('.grid-container').innerHTML = `<iframe src="${res}"></iframe>`;
-                });
-            });
-        });
+        // document.querySelectorAll('.grid-item').forEach(item => {
+        //     item.addEventListener('click', (e) => {
+        //         fetch('/proxy', {
+        //             method: 'POST',
+        //             body: JSON.stringify({ "site": item.dataset.link }),
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             }
+        //         }).then(res => res.text())
+        //         .then(res => {
+        //             document.querySelector('#service').href = res;
+        //             document.querySelector('#service').textContent=res;
+        //             document.querySelector('.grid-container').innerHTML = `<iframe src="${res}"></iframe>`;
+        //         });
+        //     });
+        // });
+        function cloak(link) {
+            var win = window.open();
+            var url = link;
+            var iframe = win.document.createElement('iframe');
+            iframe.style = "position:fixed;width:100vw;height:100vh;top:0px;left:0px;right:0px;bottom:0px;z-index:2147483647;background-color:white;border:none;";
+            iframe.src = url;
+            win.document.body.appendChild(iframe);
+        }
+        document.querySelector('#brs').onclick = ()=>{
+            var link = (`https://bio-browse.fly.dev`);
+            window.open(link);
+        }
+        document.querySelector('#clk').onclick = ()=>{
+            cloak(window.location);
+        }
     </script>
 </body>
 </html>
